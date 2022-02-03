@@ -81,7 +81,11 @@
                                                                                 
                                                                                     <p>{{$row1->name}}</p>
                                                                                
-                                                                                <p class="d-none d-xl-block">{{$row->time}} </p>
+                                                                                <p class="d-none d-xl-block">{{$row->time}} 
+                                                                                    @if(Session::get('loguser') == $row1->user_id)
+                                                                                        <a href="deletequestion/{{$row->problem_id}}" class="btn btn-icon btn-sm btn-inverse-danger"><i class="fa fa-trash"></i></a>
+                                                                                    @endif
+                                                                                </p>
                                                                             </div>
                                                                             <h5 class="mb-0 my-2">{{$row->problem_name}}</h5>
                                                                             <p>{{$row->problem}}</p>

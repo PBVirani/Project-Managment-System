@@ -66,7 +66,11 @@
                                                     <h5 class="mb-0">{{$row1->name}}</h5>
                                                     <p>{{$row->time}}</p>
                                                 </div>
-                                                
+                                                <div class="ml-5">
+                                                    @if(Session::get('loguser') == $row1->user_id)
+                                                        <a href="deletesolution/{{$row->count}}" class="btn btn-icon btn-sm btn-inverse-danger"><i class="fa fa-trash"></i></a>
+                                                    @endif
+                                                </div>  
                                             </div>
                                             <div class="mt-4 d-flex justify-content-between">
                                                 <div>

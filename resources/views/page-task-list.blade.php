@@ -44,10 +44,10 @@
                                             @csrf
                                             <div class="row">
                                                 <div class="col">
-                                                    <input type="text" class="form-control" placeholder=" Enter Task Name" name="task">
+                                                    <input type="text" class="form-control" placeholder=" Enter Task Name" name="task" required>
                                                 </div>
                                                 <div class="col">
-                                                        <select class="form-control" name="pname">
+                                                        <select class="form-control" name="pname" required> 
                                                             <option selected>Project Name</option>
                                                             @foreach($project as $project1)
                                                                 @if($project1->team_id == Session::get('logteam')) 
@@ -148,6 +148,9 @@
                                                             <a href="tasklist1/{{$row->id}}/{{$row->status}}" class="btn btn-icon btn-sm btn-inverse-danger"><i class="fa fa-times"></i></a>
                                                         @endif
                                                         <a href="edittask/{{$row->id}}" class="btn btn-icon btn-sm btn-inverse-warning"><i class="fa fa-pencil"></i></a>
+                                                        @if(Session::get('loguser') == $row->user_id)
+                                                            <a href="deletetask/{{$row->id}}" class="btn btn-icon btn-sm btn-inverse-danger"><i class="fa fa-trash"></i></a>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                                

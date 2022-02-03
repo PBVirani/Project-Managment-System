@@ -15,6 +15,7 @@
                                     <div class="card-body">
                                         <div class="d-flex p-3">
                                             <div class="mr-2">
+                                            @php ($a = 0)
                                                 @foreach($project as $row)
                                                     <h3 class="text-white mb-1">Name : {{$row->project}}</h3>
                                                     <p class="text-white">Details : {{$row->details}}</p>
@@ -23,6 +24,10 @@
                                                         <p class="text-white">Due Date : {{$row->due_date}}</p>
                                                     @else
                                                         <p class="text-white">Finised Date : {{$row->due_date}}</p>
+                                                    @endif
+
+                                                    @if(Session::get('loguser') == $row->project_manager)
+                                                        @php ($a = 1)
                                                     @endif
                                             </div>
                                         </div>
@@ -46,7 +51,9 @@
                                         <div class="card-heading">
                                             <h4 class="card-title">Team Member</h4>
                                         </div>
-                                            <a class="btn btn-round btn-inverse-primary btn-xs" href="addmember">Add new </a>
+                                            @if($a == 1)
+                                                <a class="btn btn-round btn-inverse-primary btn-xs" href="addmember">Add new </a>
+                                            @endif
                                     </div>
     
                                     @foreach($data as $row)
