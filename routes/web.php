@@ -44,6 +44,7 @@ Route::group(['middleware'=>['logdata']],function(){
 
     Route::get('tasklist1/{count}/{status}',[Updateuser::class, 'tasklist1']);
     Route::get('edittask/{id}',[Updateuser::class, 'edittask1']);
+    Route::get('deletetask/{id}',[Updateuser::class, 'deletetask']);
     Route::get('edittask',[Updateuser::class, 'edittask']);
     Route::post('updatetask',[Updateuser::class,'updatetask']);
     Route::post('addtask',[Updateuser::class,'addtask']);
@@ -52,6 +53,9 @@ Route::group(['middleware'=>['logdata']],function(){
     Route::get('addproject',[Updateuser::class,'addproject']);
     Route::post('addproject1',[Updateuser::class,'addproject1']);
     Route::post('addquestion',[Updateuser::class,'addquestion']);
+    Route::get('deletequestion/{id}',[Updateuser::class,'deletequestion']);
+    Route::get('deletesolution/{id}',[Updateuser::class,'deletesolution']);
+
     Route::post('addsolution',[Updateuser::class,'addsolution']);
     Route::post('chat1',[Updateuser::class,'chat1']);
 });
