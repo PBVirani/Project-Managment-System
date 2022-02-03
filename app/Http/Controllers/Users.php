@@ -237,7 +237,8 @@ class Users extends Controller
                 return redirect('index');
             }
         }
-        return redirect('login');
+        echo "<script>alert('Password Invalid!!');</script>";
+        return redirect('/');
     }
 
     function registration1(Request $req)

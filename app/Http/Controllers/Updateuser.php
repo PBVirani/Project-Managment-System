@@ -44,6 +44,7 @@ class Updateuser extends Controller
         session()->put('temp',$id);
         return redirect('edittask');
     }
+
     function edittask(){
         $activity  = Activity::select('*')->where(
             [
@@ -64,6 +65,11 @@ class Updateuser extends Controller
         )->get();
 
         return view('edit-task',['activity'=>$activity,'user'=>$data,'project'=>$project]);
+    }
+    function deletetask($id){
+        $activity = Activity::where('id',$id);
+        $activity->delete();
+        return redirect('tasklist');
     }
 
     function updatetask(Request $req){
@@ -166,6 +172,20 @@ class Updateuser extends Controller
         $result = $query->save();
         if($result)
             return redirect('community');
+    }
+
+    function deletequestion($id){
+        $community = Community::where('problem_id',$id);
+        $community->delete();
+        $solution = Solution::where('problem_id',"=",$id);
+        $solution->delete();
+        return redirect('community');
+    }
+
+    function deletesolution($id){
+        $solution = Solution::where('count',"=",$id);
+        $solution->delete();
+        return redirect('problem-show');
     }
 
     function addsolution(Request $req){
